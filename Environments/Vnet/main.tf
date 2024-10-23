@@ -12,8 +12,7 @@ variable "vnet_suffix" {
 
 variable "address_space" {
   description = "Address space for the virtual network"
-  type        = list(string)
-  default     = ["10.0.0.0/8"]
+  type        = string
 }
 
 variable "location" {
@@ -46,10 +45,14 @@ variable "ade_environment_type" {
   type = string
 }
 
+locals {
+  address_space = [for cidr in split(",", var.address_space) : trim(cidr)]
+}
+
 # Create the virtual network
 resource "azurerm_virtual_network" "main" {
   name                = "myVNet-${var.vnet_suffix}"
-  address_space       = var.address_space
+  address_space       = local.address_space
   location            = var.location
   resource_group_name = var.resource_group_name
 }

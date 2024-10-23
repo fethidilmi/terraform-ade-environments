@@ -17,3 +17,7 @@ parameters:
       - "northeurope"
       - "westeurope"
       - "francecentral"
+  - id: "address_space"
+    name: "Address Space, Commas separated"
+    description: 'Address Space. Exemple: "172.16.0.0/12", "10.0.0.0/8"'
+    type: "string"
