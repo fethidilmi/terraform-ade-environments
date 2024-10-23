@@ -4,6 +4,10 @@ description: Deploys an Azure Virtual Network with Terraform
 templatePath: main.tf
 runner: acroademoade.azurecr.io/my-terraform:1.7.4
 parameters:
+  - id: "vnet_suffix"
+    name: "Vnet Name Suffix"
+    description: "myVNET-<Vnet Name Suffix>"
+    type: "string"
   - id: "location"
     name: "Azure Virtual Network Location"
     description: "Azure Virtual Network Location"
@@ -13,7 +17,3 @@ parameters:
       - "northeurope"
       - "westeurope"
       - "francecentral"
-  - id: "address_space"
-    name: "CIDR Address Spaces"
-    description: "Azure Virtual Network Location CIDR address spaces"
-    type: "array"
