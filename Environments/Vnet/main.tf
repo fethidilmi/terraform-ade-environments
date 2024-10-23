@@ -46,7 +46,7 @@ variable "ade_environment_type" {
 }
 
 locals {
-  address_space = [for cidr in split(",", var.address_space) : trim(cidr)]
+  address_space = [for cidr in split(",", var.address_space) : trim(cidr, " ")]
 }
 
 # Create the virtual network
